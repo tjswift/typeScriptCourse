@@ -84,3 +84,4 @@ var finalValue = 23;
 if (typeof finalValue == "number") {
     console.log("Final value is a number");
 }
+//# sourceMappingURL=app.js.map
