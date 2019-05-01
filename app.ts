@@ -101,3 +101,19 @@ let finalValue = 23;
 if (typeof finalValue == "number" ){
     console.log("Final value is a number")
 }
+
+//*******************SECTION FIVE**********************/
+//CLASSES
+
+class Person {
+    name: string;
+    //private type: string; //available only within this object
+    //protected age: number; //available from any object thta inherits this class
+
+    constructor(name: string, public username: string) {
+        this.name = name;
+    }
+}
+
+const person = new Person("Tristen", "tjswift");
+console.log(person);

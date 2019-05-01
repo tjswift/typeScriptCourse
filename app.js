@@ -84,4 +84,17 @@ var finalValue = 23;
 if (typeof finalValue == "number") {
     console.log("Final value is a number");
 }
+//*******************SECTION FIVE**********************/
+//CLASSES
+var Person = /** @class */ (function () {
+    //private type: string; //available only within this object
+    //protected age: number; //available from any object thta inherits this class
+    function Person(name, username) {
+        this.username = username;
+        this.name = name;
+    }
+    return Person;
+}());
+var person = new Person("Tristen", "tjswift");
+console.log(person);
 //# sourceMappingURL=app.js.map
