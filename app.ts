@@ -230,14 +230,26 @@ console.log(firstName, experience);
 
 class Person {
     name: string;
-    //private type: string; //available only within this object
-    //protected age: number; //available from any object thta inherits this class
+    private type: string; //available only within this object
+    protected age: number = 23; //available from any object thta inherits this class
 
     constructor(name: string, public username: string) {
         this.name = name;
     }
+
+    printAge() {
+        console.log(this.age);
+        this.setType("Old Guy");
+    }
+
+    private setType(type: string){
+        this.type = type;
+        console.log(this.type);
+    }
 }
 
 const person = new Person("Tristen", "tjswift");
-console.log(person);
+console.log(person.name, person.username);
+person.printAge();
+//person.setType("Cool guy") //wont work with private method
 
