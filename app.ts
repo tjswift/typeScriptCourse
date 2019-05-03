@@ -191,53 +191,78 @@
 //     console.log("Final value is a number")
 // }
 
-//***********************EXERCISE TWO *******************/
+// //***********************EXERCISE TWO *******************/
 
-//Exercise 1
-var double = (value: number) => {
-    return value * 2;
-};
-console.log(double(10));
+// //Exercise 1
+// var double = (value: number) => {
+//     return value * 2;
+// };
+// console.log(double(10));
  
-// Exercise 2 - If only we could provide some default values...
-var greet = function (name: string = "Tristen") {
-    console.log(`Hello, ${name}`);
-};
-greet();
-greet("Anna");
+// // Exercise 2 - If only we could provide some default values...
+// var greet = function (name: string = "Tristen") {
+//     console.log(`Hello, ${name}`);
+// };
+// greet();
+// greet("Anna");
  
-// Exercise 3 - Isn't there a shorter way to get all these Values?
-var numbers = [-3, 33, 38, 5];
-console.log(Math.min(...numbers));
+// // Exercise 3 - Isn't there a shorter way to get all these Values?
+// var numbers = [-3, 33, 38, 5];
+// console.log(Math.min(...numbers));
  
-// Exercise 4 - I have to think about Exercise 3 ...
-var newArray = [55, 20];
-newArray.push(...numbers);
-console.log(newArray);
+// // Exercise 4 - I have to think about Exercise 3 ...
+// var newArray = [55, 20];
+// newArray.push(...numbers);
+// console.log(newArray);
  
-// Exercise 5 - That's a well-constructed array.
-var testResults = [3.89, 2.99, 1.38];
-const [result1, result2, result3] = testResults
-console.log(result1, result2, result3);
+// // Exercise 5 - That's a well-constructed array.
+// var testResults = [3.89, 2.99, 1.38];
+// const [result1, result2, result3] = testResults
+// console.log(result1, result2, result3);
  
-// Exercise 6 - And a well-constructed object!
-var scientist = {firstName: "Will", experience: 12};
-const {firstName, experience} = scientist;
-console.log(firstName, experience);
+// // Exercise 6 - And a well-constructed object!
+// var scientist = {firstName: "Will", experience: 12};
+// const {firstName, experience} = scientist;
+// console.log(firstName, experience);
 
 //*******************SECTION FIVE**********************/
 //CLASSES
 
 class Person {
     name: string;
-    //private type: string; //available only within this object
-    //protected age: number; //available from any object thta inherits this class
+    private type: string; //available only within this object
+    protected age: number = 23; //available from any object thta inherits this class
 
     constructor(name: string, public username: string) {
         this.name = name;
     }
+
+    printAge() {
+        console.log(this.age);
+        this.setType("Old Guy");
+    }
+
+    private setType(type: string){
+        this.type = type;
+        console.log(this.type);
+    }
 }
 
 const person = new Person("Tristen", "tjswift");
-console.log(person);
+console.log(person.name, person.username);
+person.printAge();
+//person.setType("Cool guy") //wont work with private method
+
+//Inheritance
+class Tristen extends Person { //content defined in main class overrides parent class
+    //name = "Tristen";
+
+    constructor(username: string) {
+        super("Tristen", username);
+    }
+}
+
+const tristen = new Tristen("max");
+console.log(tristen);
+
 

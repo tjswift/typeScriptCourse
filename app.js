@@ -161,37 +161,6 @@ var greet = function (name) {
     if (name === void 0) { name = "Tristen"; }
     console.log("Hello, " + name);
 };
-
-var complex2 = {
-    data: [100, 3.99, 10],
-    output: function (all) {
-        return this.data;
-    }
-};
-
-//union types
-var myRealRealAge = 24;
-myRealRealAge = "24";
-//myRealRealAge = true; does not work, as it is no a string or a number
-//check types
-var finalValue = 23;
-if (typeof finalValue == "number") {
-    console.log("Final value is a number");
-}
-//*******************SECTION FIVE**********************/
-//CLASSES
-var Person = /** @class */ (function () {
-    //private type: string; //available only within this object
-    //protected age: number; //available from any object thta inherits this class
-    function Person(name, username) {
-        this.username = username;
-        this.name = name;
-    }
-    return Person;
-}());
-var person = new Person("Tristen", "tjswift");
-console.log(person);
-
 greet();
 greet("Anna");
 // Exercise 3 - Isn't there a shorter way to get all these Values?
@@ -208,4 +177,4 @@ console.log(result1, result2, result3);
 var scientist = { firstName: "Will", experience: 12 };
 var firstName = scientist.firstName, experience = scientist.experience;
 console.log(firstName, experience);
-
+//# sourceMappingURL=app.js.map
