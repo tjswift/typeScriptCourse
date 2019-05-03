@@ -1,4 +1,3 @@
-"use strict";
 // //string
 // let myName = "Tristen";
 // //myName = 28; This cannot equal 28 because myName was initiated as a string
@@ -150,6 +149,15 @@
 // I'm ${personName}.
 // this is cool!`;
 // console.log(greeting);
+// //union types
+// let myRealRealAge: number | string = 24;
+// myRealRealAge = "24";
+// //myRealRealAge = true; does not work, as it is no a string or a number
+// //check types
+// let finalValue = 23;
+// if (typeof finalValue == "number" ){
+//     console.log("Final value is a number")
+// }
 //***********************EXERCISE TWO *******************/
 //Exercise 1
 var double = function (value) {
@@ -165,10 +173,11 @@ greet();
 greet("Anna");
 // Exercise 3 - Isn't there a shorter way to get all these Values?
 var numbers = [-3, 33, 38, 5];
-console.log.apply(console, numbers);
+console.log(Math.min.apply(Math, numbers));
 // Exercise 4 - I have to think about Exercise 3 ...
 var newArray = [55, 20];
-console.log.apply(console, newArray);
+newArray.push.apply(newArray, numbers);
+console.log(newArray);
 // Exercise 5 - That's a well-constructed array.
 var testResults = [3.89, 2.99, 1.38];
 var result1 = testResults[0], result2 = testResults[1], result3 = testResults[2];
@@ -177,4 +186,27 @@ console.log(result1, result2, result3);
 var scientist = { firstName: "Will", experience: 12 };
 var firstName = scientist.firstName, experience = scientist.experience;
 console.log(firstName, experience);
-//# sourceMappingURL=app.js.map
+
+
+//*******************SECTION FIVE**********************/
+//CLASSES
+var Person = /** @class */ (function () {
+    function Person(name, username) {
+        this.username = username;
+        this.age = 23; //available from any object thta inherits this class
+        this.name = name;
+    }
+    Person.prototype.printAge = function () {
+        console.log(this.age);
+        this.setType("Old Guy");
+    };
+    Person.prototype.setType = function (type) {
+        this.type = type;
+        console.log(this.type);
+    };
+    return Person;
+}());
+var person = new Person("Tristen", "tjswift");
+console.log(person.name, person.username);
+person.printAge();
+//person.setType("Cool guy") //wont work with private method

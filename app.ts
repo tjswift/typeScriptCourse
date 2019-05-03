@@ -266,3 +266,4 @@ const tristen = new Tristen("max");
 console.log(tristen);
 
 
+
