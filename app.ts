@@ -307,5 +307,5 @@ class OnlyOne {
 //let wrong = new OnlyOne("The only one"); //OnlyOne is private
 let right = OnlyOne.getInstance();
 console.log(right.name);
-right.name = "something else";
+//right.name = "something else";
 
