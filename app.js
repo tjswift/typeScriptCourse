@@ -1,6 +1,19 @@
 // //string
 // let myName = "Tristen";
 // //myName = 28; This cannot equal 28 because myName was initiated as a string
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // let myAge = 23;
 // //myAge = "Tristen"; Nope. doesnt match type
 // let hasHobbies = true;
@@ -158,36 +171,33 @@
 // if (typeof finalValue == "number" ){
 //     console.log("Final value is a number")
 // }
-//***********************EXERCISE TWO *******************/
-//Exercise 1
-var double = function (value) {
-    return value * 2;
-};
-console.log(double(10));
-// Exercise 2 - If only we could provide some default values...
-var greet = function (name) {
-    if (name === void 0) { name = "Tristen"; }
-    console.log("Hello, " + name);
-};
-greet();
-greet("Anna");
-// Exercise 3 - Isn't there a shorter way to get all these Values?
-var numbers = [-3, 33, 38, 5];
-console.log(Math.min.apply(Math, numbers));
-// Exercise 4 - I have to think about Exercise 3 ...
-var newArray = [55, 20];
-newArray.push.apply(newArray, numbers);
-console.log(newArray);
-// Exercise 5 - That's a well-constructed array.
-var testResults = [3.89, 2.99, 1.38];
-var result1 = testResults[0], result2 = testResults[1], result3 = testResults[2];
-console.log(result1, result2, result3);
-// Exercise 6 - And a well-constructed object!
-var scientist = { firstName: "Will", experience: 12 };
-var firstName = scientist.firstName, experience = scientist.experience;
-console.log(firstName, experience);
-
-
+// //***********************EXERCISE TWO *******************/
+// //Exercise 1
+// var double = (value: number) => {
+//     return value * 2;
+// };
+// console.log(double(10));
+// // Exercise 2 - If only we could provide some default values...
+// var greet = function (name: string = "Tristen") {
+//     console.log(`Hello, ${name}`);
+// };
+// greet();
+// greet("Anna");
+// // Exercise 3 - Isn't there a shorter way to get all these Values?
+// var numbers = [-3, 33, 38, 5];
+// console.log(Math.min(...numbers));
+// // Exercise 4 - I have to think about Exercise 3 ...
+// var newArray = [55, 20];
+// newArray.push(...numbers);
+// console.log(newArray);
+// // Exercise 5 - That's a well-constructed array.
+// var testResults = [3.89, 2.99, 1.38];
+// const [result1, result2, result3] = testResults
+// console.log(result1, result2, result3);
+// // Exercise 6 - And a well-constructed object!
+// var scientist = {firstName: "Will", experience: 12};
+// const {firstName, experience} = scientist;
+// console.log(firstName, experience);
 //*******************SECTION FIVE**********************/
 //CLASSES
 var Person = /** @class */ (function () {
@@ -210,3 +220,56 @@ var person = new Person("Tristen", "tjswift");
 console.log(person.name, person.username);
 person.printAge();
 //person.setType("Cool guy") //wont work with private method
+//Inheritance
+var Tristen = /** @class */ (function (_super) {
+    __extends(Tristen, _super);
+    //name = "Tristen";
+    function Tristen(username) {
+        return _super.call(this, "Tristen", username) || this;
+    }
+    return Tristen;
+}(Person));
+var tristen = new Tristen("max");
+console.log(tristen);
+// Abstract Class
+var Project = /** @class */ (function () {
+    function Project() {
+        this.projectName = "Default";
+        this.budget = 1000;
+    }
+    Project.prototype.calcBudget = function () {
+        return this.budget * 2;
+    };
+    return Project;
+}());
+var ITProject = /** @class */ (function (_super) {
+    __extends(ITProject, _super);
+    function ITProject() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ITProject.prototype.changeName = function (name) {
+        this.projectName = name;
+    };
+    return ITProject;
+}(Project));
+var newProject = new ITProject;
+console.log(newProject);
+newProject.changeName("SUPER IT PROJECT!!");
+console.log(newProject);
+// Private Constructors
+var OnlyOne = /** @class */ (function () {
+    function OnlyOne(name) {
+        this.name = name;
+    }
+    OnlyOne.getInstance = function () {
+        if (!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne("The only one");
+        }
+        return OnlyOne.instance;
+    };
+    return OnlyOne;
+}());
+//let wrong = new OnlyOne("The only one"); //OnlyOne is private
+var right = OnlyOne.getInstance();
+console.log(right.name);
+right.name = "something else";

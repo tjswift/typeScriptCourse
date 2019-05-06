@@ -265,5 +265,47 @@ class Tristen extends Person { //content defined in main class overrides parent 
 const tristen = new Tristen("max");
 console.log(tristen);
 
+// Abstract Class
+abstract class Project {
+    projectName: string = "Default";
+    budget: number = 1000;
 
+    abstract changeName(name: string): void;
+    calcBudget(){
+        return this.budget * 2;
+    }
+}
+
+class ITProject extends Project {
+    changeName(name: string): void {
+        this.projectName = name;
+    }
+}
+
+let newProject = new ITProject;
+console.log(newProject);
+newProject.changeName("SUPER IT PROJECT!!")
+console.log(newProject);
+
+// Private Constructors
+class OnlyOne {
+    private static instance: OnlyOne;
+    public readonly name: string;
+
+    private constructor(name: string){
+        this.name = name;
+    }
+
+    static getInstance(){
+        if(!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne("The only one");
+        }
+        return OnlyOne.instance;
+    }
+}
+
+//let wrong = new OnlyOne("The only one"); //OnlyOne is private
+let right = OnlyOne.getInstance();
+console.log(right.name);
+right.name = "something else";
 
